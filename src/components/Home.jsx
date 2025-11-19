@@ -3,9 +3,16 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 export default function Home() {
   return (
     <Container fluid className="p">
-      {/* Hero Section */}
-      <Row className="bg-dark text-white py-5">
-        <Col className="text-center py-5">
+      {/* Hero Section (background image placed in a blurred layer behind the content) */}
+      <Row className="hero-row text-white position-relative p-0">
+        <div
+          className="hero-bg"
+          style={{
+            backgroundImage: `url('https://gulfmagazine.co/wp-content/uploads/2025/02/neom-constructio-4.jpg')`,
+          }}
+        />
+        <div className="hero-overlay" />
+        <Col className="text-center py-5 hero-content">
           <h1 className="display-4">Welcome to NEOM</h1>
           <p className="lead">The future of living, today</p>
           <Button variant="outline-light" size="lg" href="#/vision">

@@ -43,12 +43,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .hero-row .display-4 {
   font-weight: 700;
   /* match Bootstrap's default .navbar-brand size for visual parity */
   font-size: 1.25rem;
   margin: 0;
+}
+
+/* Background layer (blurred) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(6px) saturate(1.05) contrast(0.95);
+  /* avoid scaling which causes blurred edges to show beyond the banner */
+  transform: none;
+  z-index: 0;
+}
+
+/* Semi-opaque overlay to improve text contrast */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* Content layer sits above the background and overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: clamp(2rem, 6vw, 4rem) 1rem;
 }
 
 /* ensure navbar brand matches same baseline */
