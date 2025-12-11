@@ -22,19 +22,22 @@ export default function Careers() {
     <Container className="my-5">
       <Row>
         <Col>
-          <h1 className="text-center mb-4">Careers at NEOM</h1>
+          <h1 className="text-center mb-4">Careers</h1>
           <Tabs defaultActiveKey="technology" className="mb-3">
             <Tab eventKey="technology" title="Technology">
+              <h2 className="mt-3">Technology</h2>
               {jobsBySector.technology.map((job, index) => (
                 <JobListing key={index} {...job} />
               ))}
             </Tab>
             <Tab eventKey="engineering" title="Engineering">
+              <h2 className="mt-3">Engineering</h2>
               {jobsBySector.engineering.map((job, index) => (
                 <JobListing key={index} {...job} />
               ))}
             </Tab>
             <Tab eventKey="hospitality" title="Hospitality">
+              <h2 className="mt-3">Hospitality</h2>
               {jobsBySector.hospitality.map((job, index) => (
                 <JobListing key={index} {...job} />
               ))}

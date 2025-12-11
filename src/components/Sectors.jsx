@@ -29,7 +29,7 @@ export default function Sectors() {
     <Container className="my-5">
       <Row>
         <Col>
-          <h1 className="text-center mb-4">Sectors</h1>
+          <h1 className="text-center mb-4">Our Sectors</h1>
           <Row>
             {sectors.map((sector, index) => (
               <Col md={6} lg={3} key={index} className="mb-4">

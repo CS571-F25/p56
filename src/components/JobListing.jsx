@@ -1,12 +1,16 @@
 import { Card, Button, Row, Col } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { isLoggedIn } from '../utils/auth'
 
 export default function JobListing({ title, location, type }) {
+  const navigate = useNavigate()
+
   const handleApply = () => {
-    if (sessionStorage.getItem('user')) {
-      alert(`Applied for ${title} successfully!`)
+    if (isLoggedIn()) {
+      window.dispatchEvent(new CustomEvent('notify', { detail: { message: `Applied for ${title} successfully!`, variant: 'success', delay: 2500 } }))
     } else {
-      alert('Please login to apply')
-      window.location.hash = '#/auth'
+      window.dispatchEvent(new CustomEvent('notify', { detail: { message: 'Please login to apply', variant: 'warning', delay: 2000 } }))
+      setTimeout(() => navigate('/auth'), 700)
     }
   }
 

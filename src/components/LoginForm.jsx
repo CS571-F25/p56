@@ -15,8 +15,8 @@ export default function LoginForm({ onSwitchToRegister }) {
 
     if (user) {
       login(user)
-      alert('Login successful!')
-      navigate('/')
+      window.dispatchEvent(new CustomEvent('notify', { detail: { message: 'Login successful!', variant: 'success', delay: 1800 } }))
+      setTimeout(() => navigate('/'), 600)
     } else {
       setError('Invalid email or password')
     }
@@ -46,12 +46,6 @@ export default function LoginForm({ onSwitchToRegister }) {
       <Button variant="primary" type="submit" className="w-100 mb-3">
         Login
       </Button>
-      <div className="text-center">
-        Don't have an account?{' '}
-        <Button variant="link" onClick={onSwitchToRegister}>
-          Register here
-        </Button>
-      </div>
     </Form>
   )
 }

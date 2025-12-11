@@ -5,12 +5,15 @@ export default function Home() {
     <Container fluid className="p">
       {/* Hero Section (background image placed in a blurred layer behind the content) */}
       <Row className="hero-row text-white position-relative p-0">
-        <div
+        {/* 
+                <div
           className="hero-bg"
           style={{
             backgroundImage: `url('https://gulfmagazine.co/wp-content/uploads/2025/02/neom-constructio-4.jpg')`,
           }}
         />
+        
+        */}
         <div className="hero-overlay" />
         <Col className="text-center py-5 hero-content">
           <h1 className="display-4">Welcome to NEOM</h1>
@@ -22,9 +25,14 @@ export default function Home() {
       </Row>
 
       {/* Features Section */}
-      <Container className="my-5">
+      <Container className="py-3">
+        <Row className="mb-3">
+          <Col>
+            <h2 className="text-center">Explore NEOM</h2>
+          </Col>
+        </Row>
         <Row>
-          <Col md={4} className="mb-4">
+          <Col md={4} className="mb-3">
             <Card className="h-100 text-center">
               <Card.Body>
                 <Card.Title>Sectors</Card.Title>
@@ -37,7 +45,7 @@ export default function Home() {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4} className="mb-4">
+          <Col md={4} className="mb-3">
             <Card className="h-100 text-center">
               <Card.Body>
                 <Card.Title>Careers</Card.Title>
@@ -50,7 +58,7 @@ export default function Home() {
               </Card.Body>
             </Card>
           </Col>
-          <Col md={4} className="mb-4">
+          <Col md={4} className="mb-3">
             <Card className="h-100 text-center">
               <Card.Body>
                 <Card.Title>Join Us</Card.Title>

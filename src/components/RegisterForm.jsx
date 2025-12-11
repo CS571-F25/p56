@@ -35,9 +35,9 @@ export default function RegisterForm({ onSwitchToLogin }) {
     users.push(newUser)
     saveUserList(users)
 
-    // After successful registration, direct the user to the login tab
-    alert('Registration successful! Please sign in.')
-    onSwitchToLogin()
+    // After successful registration, show toast then switch to the login tab
+    window.dispatchEvent(new CustomEvent('notify', { detail: { message: 'Registration successful! Please sign in.', variant: 'success', delay: 2000 } }))
+    setTimeout(() => onSwitchToLogin(), 600)
   }
 
   return (
@@ -82,12 +82,6 @@ export default function RegisterForm({ onSwitchToLogin }) {
       <Button variant="primary" type="submit" className="w-100 mb-3">
         Register
       </Button>
-      <div className="text-center">
-        Already have an account?{' '}
-        <Button variant="link" onClick={onSwitchToLogin}>
-          Login here
-        </Button>
-      </div>
     </Form>
   )
 }

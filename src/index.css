@@ -1,21 +1,25 @@
 :root {
   --max-width: 1280px;
   --container-padding: clamp(1rem, 2vw, 2.5rem);
-  --accent: #646cff;
-  --accent-strong: #535bf2;
-  --bg: #121212;
-  --surface: #1a1a1a;
-  --text: rgba(255, 255, 255, 0.92);
-  --muted: #9aa4b2;
-  --radius: 10px;
+  --accent: #6b9fff;  /* softer blue complementing desert tones */
+  --accent-strong: #4a7fd9;  /* deeper blue for hierarchy */
+  --accent-warm: #d4a574;  /* warm sand/bronze accent for balance */
+  --bg-start: #0a0f1a;  /* deeper, richer dark */
+  --bg-end: #0d1220;  /* consistent dark tone */
+  --surface: #141a2e;  /* slightly lighter for depth */
+  --card-surface: #0f1527;  /* card bg with subtle warmth */
+  --text: rgba(255, 255, 255, 0.96);
+  --muted: rgba(255,255,255,0.78);
+  --radius: 12px;
+  --navbar-height: 72px;
 
-  font-family: Inter, system-ui, Avenir, 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.5;
+  font-family: 'Sora', Inter, system-ui, Avenir, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
   color-scheme: light dark;
   color: var(--text);
-  background-color: var(--bg);
+  background: linear-gradient(180deg, var(--bg-start), var(--bg-end));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -37,9 +41,34 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Full-page blurred background image (fixed) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url('https://images.goway.com/production/styles/article_featured_image_3xl/s3/featured_images/saudi_arabia_wadi_disah_oasis_AdobeStock_560564857.jpg.webp?VersionId=m1J7LrIvpT6c3IM59eyDInFmXCu71zs1&itok=QA5k7Ph3');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(10px) saturate(1.05) contrast(0.9);
+  opacity: 0.75;
+  transform: scale(1.03);
+}
+
+/* dark overlay to increase contrast and match aesthetics */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.55);
 }
 
 /* Make the main app container centered and constrained */
@@ -47,6 +76,17 @@ body {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--container-padding);
+  background: transparent !important;
+}
+
+/* Ensure top-level containers don't block the blurred background */
+html, body {
+  height: 100%;
+  background: transparent !important;
+}
+
+#root > * {
+  background: transparent !important;
 }
 
 h1 {
@@ -78,7 +118,8 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 3px solid rgba(100,108,255,0.18);
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -116,4 +157,31 @@ img, video {
 .card-img-top {
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
+}
+
+/* WCAG AA Compliance: Form elements and labels */
+label, .form-label {
+  color: var(--text);
+  font-weight: 500;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Ensure tab navigation is visible */
+*:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Link underlines for better accessibility */
+a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+a:hover {
+  text-decoration: underline;
 }

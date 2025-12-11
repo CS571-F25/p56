@@ -10,6 +10,7 @@ export default function Auth() {
     <Container className="my-5">
       <Row className="justify-content-center">
         <Col md={6}>
+          <h1 className="text-center mb-4">Authentication</h1>
           <Tabs
             activeKey={activeTab}
             onSelect={(k) => setActiveTab(k)}
